@@ -1,0 +1,46 @@
+﻿@using Web.Choice.Common
+@{
+    ViewBag.Websitename = "Trắc nghiệm Online";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        @ViewBag.Title
+    </title>
+    <link rel="stylesheet" href="~/Assets/css/normalize.css">
+    <link rel="stylesheet" href="~/Assets/css/style.min.css">
+    <link rel="stylesheet" href="~/Assets/css/font-awesome.css">
+    <link rel="stylesheet" href="~/Assets/css/materialize.min.css">
+    <link rel="stylesheet" href="~/Assets/DataTables/css/jquery.dataTables.css">
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Assets/js/materialize.min.js"></script>
+    <script src="~/Assets/DataTables/js/jquery.dataTables.js"></script>
+</head>
+<body class="body-login scrollbar">
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper nav-green">
+                <a href="/" class="brand-logo cursor left"><i class="material-icons">home</i></a>
+                <div class="right">
+                    <span class="title" style="position: relative; left: 120px;font-family:Tahoma;font-weight: lighter">Xin chào: @Session[UserSession.NAME]</span>
+                    <a class='dropdown-trigger btn-menu' style="position: relative; left: 30px;font-family:Tahoma;font-weight: lighter" href='#' data-target='dropdown-menu'>Chức Năng<span class="material-icons">arrow_drop_down</span></a>
+                    <ul id='dropdown-menu' class='dropdown-content'>
+                        <li><a href="@Url.Action("TestPreview")"><i class="material-icons">event_available</i>Bài Thi Của Tôi</a></li>
+                        <li class="divider" tabindex="-1"></li>
+                        <li><a href="@Url.Action("Logout")">Đăng xuất<i class="material-icons">close</i></a></li>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    @RenderBody()
+
+    <script>
+        $('.dropdown-trigger').dropdown();
+    </script>
+</body>
+</html>

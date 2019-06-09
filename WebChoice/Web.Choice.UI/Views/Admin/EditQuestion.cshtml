@@ -1,0 +1,134 @@
+﻿@using Web.Choice.UI.Models
+@{
+    var question = Model as QuestionViewModel;
+    ViewBag.Title = "Sửa Câu Hỏi " + question.SubjectId;
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    var listSubject = ViewBag.ListSubject as List<SubjectViewModel>;
+}
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+    processEscapes: true
+    }
+    });
+</script>
+<div class="title-content">
+    <a class="title" href="@Url.Action("QuestionManager")">Quay Lại</a>
+    <span class="title">@ViewBag.Title</span>
+    @if (TempData["StatusId"] != null && (bool)TempData["StatusId"])
+    {
+        <span class="timer success" style="position: relative; left: 150px;font-family:Tahoma;font-weight: lighter">@TempData["Status"]</span>
+    }
+    else
+    {
+        <span class="timer failed" style="position: relative; left: 150px;font-family:Tahoma;font-weight: lighter">@TempData["Status"]</span>
+    }
+</div>
+<div class="content">
+    <div class="row">
+        <div id="add_normal" class="col s12">
+            @using (Html.BeginForm("EditQuestion", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+            {
+                <input type="hidden" id="id_question" name="QuestionId" required value="@question.QuestionId" class="hidden">
+                <div class="input-field">
+                    <select name="SubjectId">
+                        @foreach (var subject in listSubject)
+                        {
+                            if (subject.SubjectId == question.SubjectId)
+                            {
+                                <option value="@subject.SubjectId" selected>@subject.SubjectName</option>
+                            }
+                            else
+                            {
+                                <option value="@subject.SubjectId">@subject.SubjectName</option>
+                            }
+                        }
+                    </select>
+                    <label>Môn</label>
+                </div>
+                <div class="input-field">
+                    <input id="number" type="number" name="Unit" value="@question.Unit">
+                    <label for="number">Chương <span class="failed">(*)</span></label>
+                </div>
+                <div class="input-field">
+                    <textarea name="Content" class="materialize-textarea" required>@question.Content</textarea>
+                    <label for="content">Nội Dung Câu Hỏi <span class="failed">(*)</span></label>
+                </div>
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span>Nội Dung Ảnh (Tùy Chọn)</span>
+                        <input type="file" name="file">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="Chỉ hỗ trợ ảnh đuôi .PNG .png .JPG .jpg">
+                    </div>
+                </div>
+                <div class="input-field">
+                    <textarea name="AnswerA" id="answer_a" class="materialize-textarea" onchange="get_val(this.id)" required>@question.AnswerA</textarea>
+                    <label for="answer_a">Đáp Án A <span class="failed">(*)</span></label>
+                </div>
+                <div class="input-field">
+                    <textarea name="AnswerB" id="answer_b" class="materialize-textarea" onchange="get_val(this.id)" required>@question.AnswerB</textarea>
+                    <label for="answer_b">Đáp Án B <span class="failed">(*)</span></label>
+                </div>
+                <div class="input-field">
+                    <textarea name="AnswerC" id="answer_c" class="materialize-textarea" onchange="get_val(this.id)" required>@question.AnswerC</textarea>
+                    <label for="answer_c">Đáp Án C <span class="failed">(*)</span></label>
+                </div>
+                <div class="input-field">
+                    <textarea name="AnswerD" id="answer_d" class="materialize-textarea" onchange="get_val(this.id)" required>@question.AnswerD</textarea>
+                    <label for="answer_d">Đáp Án D <span class="failed">(*)</span></label>
+                </div>
+                <div class="input-field">
+                    <select name="CorrectAnswer">
+                        @if (question.CorrectAnswer.Equals(question.AnswerA))
+                        {
+                            <option value="@question.AnswerA" id="val_answer_a" selected>A</option>
+                        }
+                        else
+                        {
+                            <option value="@question.AnswerA" id="val_answer_a">A</option>
+                        }
+                        @if (question.CorrectAnswer.Equals(question.AnswerB))
+                        {
+                            <option value="@question.AnswerB" id="val_answer_b" selected>B</option>
+                        }
+                        else
+                        {
+                            <option value="@question.AnswerB" id="val_answer_b">B</option>
+                        }
+                        @if (question.CorrectAnswer.Equals(question.AnswerC))
+                        {
+                            <option value="@question.AnswerC" id="val_answer_c" selected>C</option>
+                        }
+                        else
+                        {
+                            <option value="@question.AnswerC" id="val_answer_c">C</option>
+                        }
+                        @if (question.CorrectAnswer.Equals(question.AnswerD))
+                        {
+                            <option value="@question.AnswerD" id="val_answer_d" selected>D</option>
+                        }
+                        else
+                        {
+                            <option value="@question.AnswerD" id="val_answer_d">D</option>
+                        }
+                    </select>
+                    <label>Đáp Án Đúng</label>
+                </div>
+                <button type="submit" class="btn full-width" id="add-question" name="add-question">Sửa</button>
+            }
+        </div>
+    </div>
+</div>
+<script>
+    $('select').select();
+    function get_val(id) {
+        var answer = $("#" + id).val();
+        $("#val_" + id).val(answer);
+    }
+</script>

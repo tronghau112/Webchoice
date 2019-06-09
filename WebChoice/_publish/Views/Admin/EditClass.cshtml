@@ -1,0 +1,73 @@
+﻿@using Web.Choice.UI.Models
+@{
+    var aClass = Model;
+    ViewBag.Title = "Sửa Lớp " + aClass.ClassName;
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    var listGrades = ViewBag.ListGrades as List<GradeViewModel>;
+    var listSpecialities = ViewBag.ListSpecialities as List<SpecialityViewModel>;
+}
+
+<div class="title-content">
+    <a class="title" href="@Url.Action("ClassManager")">Quay Lại</a>
+    <span class="title">@ViewBag.Title</span>
+    @if (TempData["StatusId"] != null && (bool)TempData["StatusId"])
+    {
+        <span class="timer success"style="position: relative; left: 150px;font-family:Tahoma;font-weight: lighter">@TempData["Status"]</span>
+    }
+    else
+    {
+        <span class="timer failed"style="position: relative; left: 150px;font-family:Tahoma;font-weight: lighter">@TempData["Status"]</span>
+    }
+</div>
+<div class="content">
+    <div class="row">
+        <div id="add_normal" class="col s12">
+            @using (Html.BeginForm("EditClass", "Admin", FormMethod.Post))
+            {
+                <input type="hidden" id="id_class" name="ClassId" required value="@aClass.ClassId" class="hidden">
+                <div class="input-field">
+                    <label for="name">Tên</label>
+                    <input type="text" id="class_name" name="ClassName" required value="@aClass.ClassName">
+                </div>
+                <div class="input-field">
+                    <select name="SpecialityId" id="id_speciality" required>
+                        @foreach (var item in listSpecialities)
+                        {
+                            if (item.SpecialityId == aClass.SpecialityId)
+                            {
+                                <option value="@item.SpecialityId" selected>@item.SpecialityName</option>
+                            }
+                            else
+                            {
+                                <option value="@item.SpecialityId">@item.SpecialityName</option>
+                            }
+                        }
+                    </select>
+                    <label>Ngành</label>
+                </div>
+                <div class="input-field">
+                    <select name="GradeId" id="id_grade" required>
+                        @foreach (var item in listGrades)
+                        {
+                            if (item.GradeId == aClass.GradeId)
+                            {
+                                <option value="@item.GradeId" selected>@item.GradeName</option>
+                            }
+                            else
+                            {
+                                <option value="@item.GradeId">@item.GradeName</option>
+                            }
+                        }
+                    </select>
+                    <label>Khoá</label>
+                </div>
+                <button type="submit" class="btn full-width" id="edit-class" name="edit-class">Sửa</button>
+            }
+        </div>
+    </div>
+</div>
+<script>
+    $('select').select();
+</script>
+
+

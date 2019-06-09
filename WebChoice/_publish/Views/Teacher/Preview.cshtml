@@ -1,0 +1,72 @@
+﻿@using Web.Choice.UI.Models
+@{
+    ViewBag.Title = "Danh Sách Điểm Sinh Viên Bài Thi " + ViewBag.testCode + " (" + ViewBag.total + ")";
+    Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
+    var list = Model as List<ScoreViewModel>;
+
+}
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+    processEscapes: true
+    }
+    });
+</script>
+<div class="title-content">
+    <span class="title">@ViewBag.Title</span>
+</div>
+<div class="content row col s12">
+    <table class="striped centered" id="list-score">
+        <thead>
+            <tr>
+                <th>Tài Khoản</th>
+                <th>Tên</th>
+                <th>Điểm</th>
+                <th>Xếp Loại</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var student in list)
+            {
+                <tr>
+                    <td>@student.Student.UserName</td>
+                    <td>@student.Student.Name</td>
+                    <td>@student.Score.ScoreNumber</td>
+                    @if (student.rank == "Yếu")
+                    {
+                        <td style="color: red">@student.rank</td>
+                    }
+                    else
+                    {
+                        <td>@student.rank</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script>
+    $('#list-score').DataTable({
+        "language": {
+            "lengthMenu": "Hiển thị _MENU_",
+            "zeroRecords": "Không tìm thấy",
+            "info": "Hiển thị trang _PAGE_/_PAGES_",
+            "infoEmpty": "Không có dữ liệu",
+            "emptyTable": "Không có dữ liệu",
+            "infoFiltered": "(tìm kiếm trong tất cả _MAX_ mục)",
+            "sSearch": "Tìm kiếm",
+            "paginate": {
+                "first": "Đầu",
+                "last": "Cuối",
+                "next": "Sau",
+                "previous": "Trước"
+            }
+        }
+    });
+    $('select').select();
+</script>

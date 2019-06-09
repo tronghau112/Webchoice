@@ -1,0 +1,17 @@
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Service\obj\Debug\Web.Choice.Service.csprojAssemblyReference.cache
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Service\obj\Debug\Web.Choice.Service.csproj.CoreCompileInputs.cache
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Service\bin\Debug\Web.Choice.Service.dll.config
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Service\bin\Debug\Web.Choice.Service.dll
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Service\bin\Debug\Web.Choice.Service.pdb
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Service\bin\Debug\EntityFramework.dll
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Service\bin\Debug\EntityFramework.SqlServer.dll
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Service\bin\Debug\Web.Choice.Common.dll
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Service\bin\Debug\Web.Choice.Entity.dll
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Service\bin\Debug\Web.Choice.Common.pdb
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Service\bin\Debug\Web.Choice.Entity.pdb
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Service\bin\Debug\Web.Choice.Entity.dll.config
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Service\bin\Debug\EntityFramework.xml
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Service\bin\Debug\EntityFramework.SqlServer.xml
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Service\obj\Debug\Web.Choice.Service.csproj.CopyComplete
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Service\obj\Debug\Web.Choice.Service.dll
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Service\obj\Debug\Web.Choice.Service.pdb

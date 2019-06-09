@@ -1,0 +1,41 @@
+﻿@using Web.Choice.UI.Models
+@{
+    ViewBag.Title = "Bài Thi Của Tôi";
+    Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
+    var listTest = Model as List<TestViewModel>;
+    var scores = ViewBag.Score as List<int>;
+}
+<div class="content row col s12 reset-margin" style="font-family:Tahoma; font-weight: lighter">
+    @foreach (var item in listTest)
+    {
+        <div class="col s6 m4 l3">
+            <div class="dashboard-inner-item" style="padding: 10px;">
+                <span class="title">Môn: <b>@item.Subject.SubjectName</b></span><br />
+                <span class="title">Mã đề: <b>@item.Test.TestCode</b></span><br />
+                <span class="title">Kỳ thi: <b>@item.Test.TestName</b></span><br />
+                <span class="title">Số câu hỏi: <b>@item.Test.QuestionsTotal</b></span><br />
+                <span class="title">Thời gian: <b>@item.Test.TimeToDo (phút)</b></span><br />
+                <span class="title">Ghi chú: <b>@item.Test.Note</b></span><br />
+                <span class="title">Trạng thái: <b>@item.Status.StatusName</b></span><br />
+                @if (item.Status.StatusId == 1)
+                {
+                    if (scores.IndexOf(item.Test.TestCode) != -1)
+                    {
+                        <a class="btn full-width" href="@Url.Action("PreviewTest/" + @item.Test.TestCode)">Chi tiết bài làm</a>
+                    }
+                    else
+                    {
+                        <a href="#enter-test-@item.Test.TestCode" class="btn full-width modal-trigger" data-code="@item.Test.TestCode" id="enter-ex">Làm bài</a>
+                    }
+                }
+                else if (item.Status.StatusId == 2)
+                {
+                    <a class="btn full-width" href="@Url.Action("PreviewTest/" + @item.Test.TestCode)">Chi tiết bài làm</a>
+                }
+            </div>
+        </div>
+    }
+</div>
+<script>
+    $('.modal').modal();
+</script>

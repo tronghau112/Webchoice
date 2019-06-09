@@ -1,0 +1,12 @@
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Entity\bin\Release\Web.Choice.Entity.dll.config
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Entity\bin\Release\Web.Choice.Entity.dll
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Entity\bin\Release\Web.Choice.Entity.pdb
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Entity\bin\Release\EntityFramework.dll
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Entity\bin\Release\EntityFramework.SqlServer.dll
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Entity\bin\Release\EntityFramework.xml
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Entity\bin\Release\EntityFramework.SqlServer.xml
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Entity\obj\Release\Web.Choice.Entity.csproj.CoreCompileInputs.cache
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Entity\obj\Release\Web.Choice.Entity.csproj.CopyComplete
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Entity\obj\Release\Web.Choice.Entity.dll
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Entity\obj\Release\Web.Choice.Entity.pdb
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Entity\obj\Release\Web.Choice.Entity.csprojAssemblyReference.cache

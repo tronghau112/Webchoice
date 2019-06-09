@@ -1,0 +1,171 @@
+﻿@using Web.Choice.UI.Models
+@{
+    var list = Model as List<StudentQuestViewModel>;
+    ViewBag.Title = "Chi Tiết Bài Thi " + list.FirstOrDefault()?.Test?.TestCode;
+    var score = ViewBag.Score as ScoreViewModel;
+    Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
+    var show = ViewBag.Show;
+}
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+    processEscapes: true
+    }
+    });
+</script>
+<div class="title-content">
+    <span class="title">@ViewBag.Title</span>
+</div>
+<div class="content row col s12 reset-margin" style="padding:0;">
+    <span class="title">Số câu trả lời đúng: <b>@score.Detail</b></span><br />
+    <span class="title">Điểm: <b style="color:red; font-size:20px;">@score.ScoreNumber</b></span><br />
+    @if (ViewBag.Show == "Yếu")
+    {
+        <span class="title">Xếp loại: <b style="color:red; ">@ViewBag.Show</b></span><br />
+    }
+    else
+    {
+        <span class="title">Xếp loại: <b>@ViewBag.Show</b></span><br />
+    }
+    <hr />
+    @{
+        int x = 1;
+        foreach (var item in list)
+        {
+            <div id="quest-@x" class="item-quest">
+                <div class="quest-title">Câu @x :</div>
+                <div class="quest-content">
+                    <span>@item.Question.Content</span>
+
+                </div>
+                <div class="quest-answer">
+                    <p>
+                        <label>
+                            @if (item.StudentTestDetail.StudentAnswer != null && item.StudentTestDetail.StudentAnswer.Trim().Equals(item.StudentTestDetail.AnswerA.Trim()) && item.StudentTestDetail.StudentAnswer.Trim().Equals(item.Question.CorrectAnswer.Trim()))
+                            {
+                                <input name="@item.Question.QuestionId" type="radio" checked disabled />
+                                <span style="color:green">@item.StudentTestDetail.AnswerA</span>
+                            }
+                            else
+                            {
+                                if (item.StudentTestDetail.StudentAnswer != null && item.StudentTestDetail.StudentAnswer.Trim().Equals(item.StudentTestDetail.AnswerA.Trim()) && !item.StudentTestDetail.StudentAnswer.Trim().Equals(item.Question.CorrectAnswer.Trim()))
+                                {
+                                    <input name="@item.Question.QuestionId" type="radio" checked disabled />
+                                    <span style="color:red">@item.StudentTestDetail.AnswerA</span>
+                                }
+                                else
+                                {
+                                    if (item.StudentTestDetail.AnswerA.Trim().Equals(item.Question.CorrectAnswer.Trim()))
+                                    {
+                                        <input name="@item.Question.QuestionId" type="radio" checked disabled />
+                                        <span style="color:green">@item.StudentTestDetail.AnswerA</span>
+                                    }
+                                    else
+                                    {
+                                        <input name="@item.Question.QuestionId" type="radio" disabled />
+                                        <span>@item.StudentTestDetail.AnswerA</span>
+                                    }
+                                }
+                            }
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            @if (item.StudentTestDetail.StudentAnswer != null && item.StudentTestDetail.StudentAnswer.Trim().Equals(item.StudentTestDetail.AnswerB.Trim()) && item.StudentTestDetail.StudentAnswer.Trim().Equals(item.Question.CorrectAnswer.Trim()))
+                            {
+                                <input name="@item.Question.QuestionId" type="radio" checked disabled />
+                                <span style="color:green">@item.StudentTestDetail.AnswerB</span>
+                            }
+                            else
+                            {
+                                if (item.StudentTestDetail.StudentAnswer != null && item.StudentTestDetail.StudentAnswer.Trim().Equals(item.StudentTestDetail.AnswerB.Trim()) && !item.StudentTestDetail.StudentAnswer.Trim().Equals(item.Question.CorrectAnswer.Trim()))
+                                {
+                                    <input name="@item.Question.QuestionId" type="radio" checked disabled />
+                                    <span style="color:red">@item.StudentTestDetail.StudentAnswer</span>
+                                }
+                                else
+                                {
+                                    if (item.StudentTestDetail.AnswerB.Trim().Equals(item.Question.CorrectAnswer.Trim()))
+                                    {
+                                        <input name="@item.Question.QuestionId" type="radio" checked disabled />
+                                        <span style="color:green">@item.StudentTestDetail.AnswerB</span>
+                                    }
+                                    else
+                                    {
+                                        <input name="@item.Question.QuestionId" type="radio" disabled />
+                                        <span>@item.StudentTestDetail.AnswerB</span>
+                                    }
+                                }
+                            }
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            @if (item.StudentTestDetail.StudentAnswer != null && item.StudentTestDetail.StudentAnswer.Trim().Equals(item.StudentTestDetail.AnswerC.Trim()) && item.StudentTestDetail.StudentAnswer.Trim().Equals(item.Question.CorrectAnswer.Trim()))
+                            {
+                                <input name="@item.Question.QuestionId" type="radio" checked disabled />
+                                <span style="color:green">@item.StudentTestDetail.AnswerC</span>
+                            }
+                            else
+                            {
+                                if (item.StudentTestDetail.StudentAnswer != null && item.StudentTestDetail.StudentAnswer.Trim().Equals(item.StudentTestDetail.AnswerC.Trim()) && !item.StudentTestDetail.StudentAnswer.Trim().Equals(item.Question.CorrectAnswer.Trim()))
+                                {
+                                    <input name="@item.Question.QuestionId" type="radio" checked disabled />
+                                    <span style="color:red">@item.StudentTestDetail.AnswerC</span>
+                                }
+                                else
+                                {
+                                    if (item.StudentTestDetail.AnswerC.Trim().Equals(item.Question.CorrectAnswer.Trim()))
+                                    {
+                                        <input name="@item.Question.QuestionId" type="radio" checked disabled />
+                                        <span style="color:green">@item.StudentTestDetail.AnswerC</span>
+                                    }
+                                    else
+                                    {
+                                        <input name="@item.Question.QuestionId" type="radio" disabled />
+                                        <span>@item.StudentTestDetail.AnswerC</span>
+                                    }
+                                }
+                            }
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            @if (item.StudentTestDetail.StudentAnswer != null && item.StudentTestDetail.StudentAnswer.Trim().Equals(item.StudentTestDetail.AnswerD.Trim()) && item.StudentTestDetail.StudentAnswer.Trim().Equals(item.Question.CorrectAnswer.Trim()))
+                            {
+                                <input name="@item.Question.QuestionId" type="radio" checked disabled />
+                                <span style="color:green">@item.StudentTestDetail.AnswerD</span>
+                            }
+                            else
+                            {
+                                if (item.StudentTestDetail.StudentAnswer != null && item.StudentTestDetail.StudentAnswer.Trim().Equals(item.StudentTestDetail.AnswerD.Trim()) && !item.StudentTestDetail.StudentAnswer.Trim().Equals(item.Question.CorrectAnswer.Trim()))
+                                {
+                                    <input name="@item.Question.QuestionId" type="radio" checked disabled />
+                                    <span style="color:red">@item.StudentTestDetail.AnswerD</span>
+                                }
+                                else
+                                {
+                                    if (item.StudentTestDetail.AnswerD.Trim().Equals(item.Question.CorrectAnswer.Trim()))
+                                    {
+                                        <input name="@item.Question.QuestionId" type="radio" checked disabled />
+                                        <span style="color:green">@item.StudentTestDetail.AnswerD</span>
+                                    }
+                                    else
+                                    {
+                                        <input name="@item.Question.QuestionId" type="radio" disabled />
+                                        <span>@item.StudentTestDetail.AnswerD</span>
+                                    }
+                                }
+                            }
+                        </label>
+                    </p>
+                </div>
+            </div>
+            x = x + 1;
+        }
+    }
+</div>

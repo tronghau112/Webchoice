@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{28E97029-A9EE-422D-88A3-613041697B2D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Web.Choice.Bussiness</RootNamespace>
+    <AssemblyName>Web.Choice.Bussiness</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Implementation\AdminBus.cs" />
+    <Compile Include="Implementation\LoginBus.cs" />
+    <Compile Include="Implementation\StudentBus.cs" />
+    <Compile Include="Implementation\TeacherBus.cs" />
+    <Compile Include="Interfaces\IAdminBus.cs" />
+    <Compile Include="Interfaces\ILoginBus.cs" />
+    <Compile Include="Interfaces\IStudentBus.cs" />
+    <Compile Include="Interfaces\ITeacherBus.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Web.Choice.Common\Web.Choice.Common.csproj">
+      <Project>{13019217-90FB-42D6-B908-7161A6895440}</Project>
+      <Name>Web.Choice.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Web.Choice.Entity\Web.Choice.Entity.csproj">
+      <Project>{48993B3C-DDA0-4347-8A6C-6D7CDBC9A50C}</Project>
+      <Name>Web.Choice.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Web.Choice.Service\Web.Choice.Service.csproj">
+      <Project>{B1C36D2D-89A3-4F28-A8C3-38DF0578417E}</Project>
+      <Name>Web.Choice.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

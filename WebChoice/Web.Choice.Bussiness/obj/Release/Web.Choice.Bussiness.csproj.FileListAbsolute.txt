@@ -1,0 +1,17 @@
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Bussiness\bin\Release\Web.Choice.Bussiness.dll
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Bussiness\bin\Release\Web.Choice.Bussiness.pdb
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Bussiness\bin\Release\Web.Choice.Common.dll
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Bussiness\bin\Release\Web.Choice.Entity.dll
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Bussiness\bin\Release\Web.Choice.Service.dll
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Bussiness\bin\Release\EntityFramework.dll
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Bussiness\bin\Release\Web.Choice.Common.pdb
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Bussiness\bin\Release\Web.Choice.Entity.pdb
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Bussiness\bin\Release\Web.Choice.Entity.dll.config
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Bussiness\bin\Release\Web.Choice.Service.pdb
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Bussiness\bin\Release\Web.Choice.Service.dll.config
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Bussiness\bin\Release\EntityFramework.xml
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Bussiness\obj\Release\Web.Choice.Bussiness.csprojAssemblyReference.cache
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Bussiness\obj\Release\Web.Choice.Bussiness.csproj.CoreCompileInputs.cache
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Bussiness\obj\Release\Web.Choice.Bussiness.csproj.CopyComplete
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Bussiness\obj\Release\Web.Choice.Bussiness.dll
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Bussiness\obj\Release\Web.Choice.Bussiness.pdb

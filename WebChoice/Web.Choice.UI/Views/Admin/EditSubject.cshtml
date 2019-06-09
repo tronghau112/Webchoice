@@ -1,0 +1,39 @@
+﻿@using Web.Choice.UI.Models
+@{
+    var subject = Model as SubjectViewModel;
+    ViewBag.Title = "Sửa Môn " + subject.SubjectName;
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="title-content">
+    <a class="title" href="@Url.Action("SubjectManager")">Quay Lại</a>
+    <span class="title">@ViewBag.Title</span>
+    @if (TempData["StatusId"] != null && (bool)TempData["StatusId"])
+    {
+        <span class="timer success"style="position: relative; left: 150px;font-family:Tahoma;font-weight: lighter">@TempData["Status"]</span>
+    }
+    else
+    {
+        <span class="timer failed"style="position: relative; left: 150px;font-family:Tahoma;font-weight: lighter">@TempData["Status"]</span>
+    }
+</div>
+<div class="content">
+    <div class="row">
+        <div id="add_normal" class="col s12">
+            @using (Html.BeginForm("EditSubject", "Admin", FormMethod.Post))
+            {
+                <input type="hidden" id="id_subject" name="SubjectId" required value="@subject.SubjectId" class="hidden">
+                <div class="input-field">
+                    <label for="name">Tên Môn</label>
+                    <input type="text" id="subject_name" name="SubjectName" required value="@subject.SubjectName">
+                </div>
+                <button type="submit" class="btn full-width" id="edit-subject" name="edit-subject">Sửa</button>
+            }
+        </div>
+    </div>
+</div>
+<script>
+    $('select').select();
+</script>
+
+

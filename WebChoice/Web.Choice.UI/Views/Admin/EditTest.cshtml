@@ -1,0 +1,49 @@
+﻿@using Web.Choice.UI.Models
+@{
+    var test = Model as TestViewModel;
+    ViewBag.Title = "Sửa Đề Thi " + test.TestCode;
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="title-content">
+    <span class="title">@ViewBag.Title</span>
+    @if (TempData["StatusId"] != null && (bool)TempData["StatusId"])
+    {
+        <span class="timer success"style="position: relative; left: 150px;font-family:Tahoma;font-weight: lighter">@TempData["Status"]</span>
+    }
+    else
+    {
+        <span class="timer failed"style="position: relative; left: 150px;font-family:Tahoma;font-weight: lighter">@TempData["Status"]</span>
+    }
+</div>
+<div class="content">
+    <div class="row">
+        <div id="add_normal" class="col s12">
+            @using (Html.BeginForm("EditTest", "Admin", FormMethod.Post))
+            {
+                <input type="hidden" id="test_code" name="TestCode" required value="@test.TestCode" class="hidden">
+                <div class="input-field">
+                    <label for="email">Tên <span class="failed">(*)</span></label>
+                    <input type="text" id="test_name" name="TestName" required value="@test.TestName">
+                </div>
+                <div class="input-field">
+                    <label for="email">Mật khẩu (để trống nếu không đổi)</label>
+                    <input type="password" id="password" name="Password">
+                </div>
+                <div class="input-field">
+                    <label for="email">Thời gian làm bài (phút) <span class="failed">(*)</span></label>
+                    <input type="number" id="time_to_do" name="TimeToDo" required value="@test.TimeToDo">
+                </div>
+                <div class="input-field">
+                    <textarea name="Note" class="materialize-textarea">@test.Note</textarea>
+                    <label for="content">Ghi chú</label>
+                </div>
+                <button type="submit" class="btn full-width" id="add-question" name="add-question">Sửa</button>
+            }
+        </div>
+    </div>
+</div>
+<script>
+    $('select').select();
+</script>
+
+

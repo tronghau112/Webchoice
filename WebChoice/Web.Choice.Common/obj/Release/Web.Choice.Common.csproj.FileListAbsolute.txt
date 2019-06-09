@@ -1,0 +1,5 @@
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Common\bin\Release\Web.Choice.Common.dll
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Common\bin\Release\Web.Choice.Common.pdb
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Common\obj\Release\Web.Choice.Common.csproj.CoreCompileInputs.cache
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Common\obj\Release\Web.Choice.Common.dll
+E:\WebChoiceMVCDotNet\WebChoice\Web.Choice.Common\obj\Release\Web.Choice.Common.pdb

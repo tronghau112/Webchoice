@@ -1,0 +1,29 @@
+﻿@using Web.Choice.UI.Models
+@{
+    ViewBag.Title = "Trang Chủ";
+    Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
+    var listTest = Model as List<TestViewModel>;
+}
+
+<div class="title-content">
+    <span class="title">@ViewBag.Title</span>
+</div>
+<div class="content row col s12 reset-margin">
+    @foreach (var item in listTest)
+    {
+        <div class="col s6 m4 l3">
+            <div class="dashboard-inner-item" style="padding: 10px;">
+                <span class="title">Môn: <b>@item.Subject.SubjectName</b></span><br />
+                <span class="title">Mã đề: <b>@item.Test.TestCode</b></span><br />
+                <span class="title">Kỳ thi: <b>@item.Test.TestName</b></span><br />
+                <span class="title">Số câu hỏi: <b>@item.Test.QuestionsTotal</b></span><br />
+                <span class="title">Thời gian: <b>@item.Test.TimeToDo (phút)</b></span><br />
+                <span class="title">Ghi chú: <b>@item.Test.Note</b></span><br />
+                <span class="title">Trạng thái: <b>@item.Status.StatusName</b></span><br />
+                <a class="btn full-width" href="@Url.Action("Preview/" + @item.Test.TestCode)">Xem</a>
+            </div>
+        </div>
+    }
+</div>
+<script>
+</script>

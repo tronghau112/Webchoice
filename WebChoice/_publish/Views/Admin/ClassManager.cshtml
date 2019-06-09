@@ -1,0 +1,188 @@
+﻿@using Web.Choice.UI.Models
+@{
+    ViewBag.Title = "Quản Lý Khóa/Lớp";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    var list = Model as List<ClassViewModel>;
+    var lstGrades = ViewBag.ListGrades as List<GradeViewModel>;
+    var lstSpecialities = ViewBag.ListSpecialities as List<SpecialityViewModel>;
+}
+<div class="title-content">
+    <span class="title">@ViewBag.Title</span>
+    @if (TempData["StatusId"] != null && (bool)TempData["StatusId"])
+    {
+        <span class="timer success"style="position: relative; left: 150px;font-family:Tahoma;font-weight: lighter">@TempData["Status"]</span>
+    }
+    else
+    {
+        <span class="timer failed"style="position: relative; left: 150px;font-family:Tahoma;font-weight: lighter">@TempData["Status"]</span>
+    }
+</div>
+<div class="content row col s12">
+    @using (Html.BeginForm("DeleteClass", "Admin", FormMethod.Post))
+    {
+        <table class="striped centered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên Lớp</th>
+                    <th>Khóa</th>
+                    <th>Ngành</th>
+                    <th>
+                        <p>
+                            <label>
+                                <input type="checkbox" id="checked-all" />
+                                <span></span>
+                            </label>
+                        </p>
+                    </th>
+                    <th>
+                        <i class="material-icons" id="icon-settings">settings</i>
+                        <input type="submit" class="material-icons hidden" value="delete_forever" style="background: none; border: none; cursor: pointer; color: red;" id="icon-delete-all" />
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in list)
+                {
+                    <tr>
+                        <td>@item.Class.ClassId</td>
+                        <td>@item.Class.ClassName</td>
+                        <td>@item.Grade.GradeName</td>
+                        <td>@item.Speciality.SpecialityName</td>
+                        <td>
+                            <p>
+                                <label>
+                                    <input type="checkbox" class="checkbox" name="Checkbox" value="@item.Class.ClassId" onchange="check_box()" />
+                                    <span></span>
+                                </label>
+                            </p>
+                        </td>
+                        <td>
+                            <a href="@Url.Action("EditClass/"+item.Class.ClassId)"><i class="material-icons">edit</i></a>
+                            <a class="modal-trigger" href="#delete-@item.Class.ClassId"><i class="material-icons">delete</i></a>
+                        </td>
+                    </tr>
+                    <div id="delete-@item.Class.ClassId" class="modal">
+                        <div class="modal-content">
+                            <h4>Xác Nhận</h4>
+                            <p>Bạn có xóa lớp @item.Class.ClassName</p>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#" class="modal-close waves-effect waves-green btn-flat">Hủy</a>
+                            <a href="@Url.Action("DeleteClass/" + item.Class.ClassId)" class="modal-close waves-effect waves-green btn-flat">Có</a>
+                        </div>
+                    </div>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+<div class="content">
+    <div class="row" style="padding-top: 10px">
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s6"><a href="#add_normal" class="active" style="color: #02796e; font-weight: bold;">Thêm Khóa/Lớp</a></li>
+            </ul>
+        </div>
+        <div id="add_normal" class="col s12">
+            @using (Html.BeginForm("AddClass", "Admin", FormMethod.Post))
+            {
+                <div class="col l6 s12">
+                    <div class="input-field">
+                        <label for="email">Tên Lớp <span class="failed">(*)</span></label>
+                        <input type="text" id="class_name" name="ClassName" required>
+                    </div>
+                    <div class="input-field">
+                        <select name="GradeId" id="id_grade" required>
+                            @foreach (var item in lstGrades)
+                            {
+                                <option value="@item.GradeId">@item.GradeName</option>
+                            }
+                        </select>
+                        <label>Khóa</label>
+                    </div>
+                    <div class="input-field">
+                        <select name="SpecialityId" id="id_speciality" required>
+                            @foreach (var item in lstSpecialities)
+                            {
+                                <option value="@item.SpecialityId">@item.SpecialityName</option>
+                            }
+                        </select>
+                        <label>Ngành</label>
+                    </div>
+                    <div class="col s12">
+                        <button type="submit" class="btn full-width" id="add-class" name="add-class">Thêm</button>
+                    </div>
+                </div>
+            }
+            @using (Html.BeginForm("AddGrade", "Admin", FormMethod.Post))
+            {
+                <div class="col l6 s12">
+                    <div class="input-field">
+                        <label for="name">Tên Khóa <span class="failed">(*)</span></label>
+                        <input type="text" id="grade_name" name="GradeName" required>
+                    </div>
+                    <div class="col s12">
+                        <button type="submit" class="btn full-width" id="add-grade" name="add-grade">Thêm</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<script>
+    $('.tabs').tabs();
+    $('.modal').modal();
+    $('#classes-table').DataTable({
+        "language": {
+            "lengthMenu": "Hiển thị _MENU_",
+            "zeroRecords": "Không tìm thấy",
+            "info": "Hiển thị trang _PAGE_/_PAGES_",
+            "infoEmpty": "Không có dữ liệu",
+            "emptyTable": "Không có dữ liệu",
+            "infoFiltered": "(tìm kiếm trong tất cả _MAX_ mục)",
+            "sSearch": "Tìm kiếm",
+            "paginate": {
+                "first": "Đầu",
+                "last": "Cuối",
+                "next": "Sau",
+                "previous": "Trước"
+            }
+        },
+        "aoColumnDefs": [
+            { "bSortable": false, "aTargets": [4, 5] }
+        ]
+    });
+    $('select').select();
+    $('#checked-all').on('change', function () {
+        if (this.checked) {
+            $('.checkbox').each(function () {
+                this.checked = true;
+            });
+            $('#icon-settings').addClass('hidden');
+            $('#icon-delete-all').removeClass('hidden');
+        } else {
+            $('.checkbox').each(function () {
+                this.checked = false;
+            });
+            $('#icon-settings').removeClass('hidden');
+            $('#icon-delete-all').addClass('hidden');
+        }
+    });
+    function check_box() {
+        $('#icon-delete-all').removeClass('hidden');
+        if ($('.checkbox:checked').length == $('.checkbox').length) {
+            $('#checked-all').prop('checked', true);
+        } else {
+            $('#checked-all').prop('checked', false);
+        }
+        if ($('.checkbox:checked').length == 0) {
+            $('#icon-delete-all').addClass('hidden');
+            $('#icon-settings').removeClass('hidden');
+        } else {
+            $('#icon-settings').addClass('hidden');
+            $('#icon-delete-all').removeClass('hidden');
+        }
+    }
+</script>
